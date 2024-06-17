@@ -1,16 +1,12 @@
-import { useState } from 'react';
+function Link(props: { onLinkClick: (num: string) => void, linkInfo?: { text: string, address: string } }) {
+  console.log(`Link Render`);
 
-
-function Link(props: { onCountClick: (num: number) => void}) {
-  const [count, setCount] = useState(0);
-  console.log('render Link');
   const handleClick = () => {
-    setCount(count + 1);
-    props.onCountClick(count + 1)
+    props.onLinkClick(props.linkInfo?.address ?? '')
   }
   return (
-    <div onClick={handleClick}>
-      {count}
+    <div >
+      <div onClick={handleClick}>{props.linkInfo?.text}</div>
     </div>
   );
 }
